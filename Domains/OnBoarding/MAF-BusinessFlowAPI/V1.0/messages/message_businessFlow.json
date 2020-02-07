@@ -26,7 +26,13 @@
                     "name": "mail",
                     "type": "String",
                     "value": "john.smith@mail.com"
+                },
+                {
+                    "name": "mail",
+                    "type": "String",
+                    "value": "john.smith@mail.com"
                 }
+
             ]
         }
     }

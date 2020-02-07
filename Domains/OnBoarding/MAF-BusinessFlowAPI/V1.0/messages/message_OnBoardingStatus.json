@@ -1,0 +1,23 @@
+{
+	"flowInfo" : {
+		"id" : "john.smith@mail.com",
+		"id-type" : "userMail",
+		"dataField" : [
+			{
+				"name": "OnBoard-Status-code",
+                "type": "Numeric",
+                "value": "0"
+			},
+			{
+				"name": "OnBoard-Status-desc",
+                "type": "String",
+                "value": "Credentials-level"
+			},
+			{
+				"name": "OnBoard-DateCreated",
+                "type": "Date",
+                "value": "2020-01-23T18:25:43.511Z"	
+			}
+		]
+	}
+}
