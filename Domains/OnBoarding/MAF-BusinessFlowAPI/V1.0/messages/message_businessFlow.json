@@ -1,5 +1,6 @@
 {
     "businessFlow": {
+        "id" : "john.smith@mail.com",
         "flow": {
             "flowIdentifier": {
                 "key": "userMail",
