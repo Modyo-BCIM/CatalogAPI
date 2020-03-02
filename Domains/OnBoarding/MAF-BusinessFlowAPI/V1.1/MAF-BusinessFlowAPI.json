@@ -1,0 +1,457 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "MAF-BusinessFlowAPI",
+        "version": "1.0.0",
+        "description": "Businees Flow API DEscription Here"
+    },
+    "paths": {
+        "/getFlowStatus": {
+            "summary": "summary Path here",
+            "description": "path description here",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FlowStatusInfoResponse"
+                                }
+                            }
+                        },
+                        "description": "success Query"
+                    }
+                },
+                "operationId": "getFlowStatus",
+                "summary": "GET summary Here",
+                "description": "GEt DEscription here"
+            },
+            "parameters": [
+                {
+                    "name": "flowDataID",
+                    "description": "identifier flow data here",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query",
+                    "required": true
+                }
+            ]
+        },
+        "/createFlowData": {
+            "summary": "path summary here",
+            "description": "description here",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FlowData_POST"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FlowDataCreationResponse"
+                                }
+                            }
+                        },
+                        "description": "creation succesfully"
+                    }
+                },
+                "operationId": "createFlowData",
+                "summary": "summary post here",
+                "description": "description POST here"
+            }
+        },
+        "/searchFlowData": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/dataFlowSearchResult"
+                                }
+                            }
+                        },
+                        "description": "success"
+                    }
+                },
+                "operationId": "searchFlowData",
+                "summary": "summary"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "FlowData_POST": {
+                "title": "Root Type for FlowData_POST",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "flowData": {
+                        "type": "object",
+                        "properties": {
+                            "domainID": {
+                                "type": "string"
+                            },
+                            "flowID": {
+                                "type": "string"
+                            },
+                            "userID": {
+                                "type": "string"
+                            },
+                            "flowStatus": {
+                                "type": "object",
+                                "properties": {
+                                    "statusID": {
+                                        "type": "string"
+                                    },
+                                    "statusPayload": {
+                                        "type": "object",
+                                        "properties": {
+                                            "messageHeader": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "params": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "paramKey": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "flowPayload": {
+                                "type": "object",
+                                "properties": {
+                                    "messageHeader": {
+                                        "type": "object",
+                                        "properties": {
+                                            "params": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "paramKey": {
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "flowData": {
+                        "domainID": "BD-001",
+                        "flowID": "BF-001",
+                        "userID": "john@mail.com",
+                        "flowStatus": {
+                            "statusID": "FS-01",
+                            "statusPayload": {
+                                "messageHeader": {
+                                    "params": [
+                                        {
+                                            "paramKey": "Encrypted",
+                                            "value": "True"
+                                        },
+                                        {
+                                            "paramKey": "PublicKey",
+                                            "value": "SOMEKEY"
+                                        }
+                                    ]
+                                },
+                                "message": "##Endoded Object JSON // TODO: Define"
+                            }
+                        },
+                        "flowPayload": {
+                            "messageHeader": {
+                                "params": [
+                                    {
+                                        "paramKey": "Encrypted",
+                                        "value": "True"
+                                    },
+                                    {
+                                        "paramKey": "PublicKey",
+                                        "value": "SOMEKEY"
+                                    }
+                                ]
+                            },
+                            "message": "##Endoded Object JSON // TODO: Define"
+                        }
+                    }
+                }
+            },
+            "FlowDataCreationResponse": {
+                "title": "Root Type for FlowDataCreationResponse",
+                "description": " Flw REsponse creation description here",
+                "type": "object",
+                "properties": {
+                    "flowDataID": {
+                        "type": "string"
+                    },
+                    "flowStatusID": {
+                        "type": "string"
+                    },
+                    "userID": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "flowDataID": "01477",
+                    "flowStatusID": "31242",
+                    "userID": "john@mail.com"
+                }
+            },
+            "FlowStatusInfoResponse": {
+                "title": "Root Type for FlowStatusInfoResponse",
+                "description": "description response here",
+                "type": "object",
+                "properties": {
+                    "flowStatusInfo": {
+                        "type": "object",
+                        "properties": {
+                            "user": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "flowInfo": {
+                                "type": "object",
+                                "properties": {
+                                    "domainID": {
+                                        "type": "string"
+                                    },
+                                    "flowDataID": {
+                                        "type": "string"
+                                    },
+                                    "flowName": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "flowStatus": {
+                                "type": "object",
+                                "properties": {
+                                    "statusID": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "statusPayload": {
+                                        "type": "object",
+                                        "properties": {
+                                            "messageHeader": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "params": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "paramKey": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "flowStatusInfo": {
+                        "user": {
+                            "id": "john@mail.com",
+                            "firstName": "John",
+                            "lastName": "Smith"
+                        },
+                        "flowInfo": {
+                            "domainID": "BD-001",
+                            "flowDataID": "37327",
+                            "flowName": "OnBoarding"
+                        },
+                        "flowStatus": {
+                            "statusID": "ST-00",
+                            "name": "Credentials-Stage",
+                            "statusPayload": {
+                                "messageHeader": {
+                                    "params": [
+                                        {
+                                            "paramKey": "Encrypted",
+                                            "value": "True"
+                                        },
+                                        {
+                                            "paramKey": "PublicKey",
+                                            "value": "SOMEKEY"
+                                        }
+                                    ]
+                                },
+                                "message": "##Encoded Object JSON // TODO: Define"
+                            }
+                        }
+                    }
+                }
+            },
+            "dataFlowSearchResult": {
+                "title": "Root Type for dataFlowSearchResult",
+                "description": "description response",
+                "type": "object",
+                "properties": {
+                    "dataFlowSearchResult": {
+                        "type": "object",
+                        "properties": {
+                            "flowData": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "flowDataID": {
+                                            "type": "string"
+                                        },
+                                        "domainInfo": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "flowInfo": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "creationDate": {
+                                                    "type": "string"
+                                                },
+                                                "lastModificationDate": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "flowStatusInfo": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "statusID": {
+                                                    "type": "string"
+                                                },
+                                                "statusName": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "dataFlowSearchResult": {
+                        "flowData": [
+                            {
+                                "flowDataID": "1033002",
+                                "domainInfo": {
+                                    "id": "BD-001",
+                                    "name": "Accounts"
+                                },
+                                "flowInfo": {
+                                    "id": "BF-001",
+                                    "name": "OnBoarding",
+                                    "creationDate": "$Timestamp",
+                                    "lastModificationDate": "$Timestamp"
+                                },
+                                "flowStatusInfo": {
+                                    "id": "12934892",
+                                    "statusID": "ST-00",
+                                    "statusName": "Stage 0"
+                                }
+                            },
+                            {
+                                "flowDataID": "10333244",
+                                "domainInfo": {
+                                    "id": "BD-001",
+                                    "name": "Accounts"
+                                },
+                                "flowInfo": {
+                                    "id": "BF-001",
+                                    "name": "OnBoarding Joining",
+                                    "creationDate": "$Timestamp",
+                                    "lastModificationDate": "$Timestamp"
+                                },
+                                "flowStatusInfo": {
+                                    "id": "12934892",
+                                    "statusID": "ST-01",
+                                    "statusName": "Stage 1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
