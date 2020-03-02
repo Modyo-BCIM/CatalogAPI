@@ -1,0 +1,33 @@
+{
+	"flowStatusInfo" : {
+		"user" : {
+			"id" : "john@mail.com",
+			"firstName" : "John",
+			"lastName" : "Smith"
+		},
+		"flowInfo" : {
+			"domainID" : "BD-001",
+			"flowDataID" : "37327",
+			"flowName" : "OnBoarding"
+		},
+		"flowStatus" : {
+			"statusID" : "ST-00",
+			"name" : "Credentials-Stage",
+			"statusPayload" : {
+				"messageHeader" : {
+                    "params" : [
+                        {
+                            "paramKey" : "Encrypted",
+                            "value" : "True"
+                        },
+                        {
+                            "paramKey" : "PublicKey",
+                            "value" : "SOMEKEY"
+                        }
+                    ]
+                },
+                "message" : "##Encoded Object JSON // TODO: Define"
+			}
+		}
+	}
+}

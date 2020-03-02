@@ -1,0 +1,41 @@
+{
+    "flowData": {
+        "domainID" : "BD-001",
+        "flowID" : "BF-001",
+        "userID" : "john@mail.com",
+        "flowStatus" : {
+            "statusID" : "FS-01",
+            "statusPayload" : {
+                "messageHeader" : {
+                    "params" : [
+                        {
+                            "paramKey" : "Encrypted",
+                            "value" : "True"
+                        },
+                        {
+                            "paramKey" : "PublicKey",
+                            "value" : "SOMEKEY"
+                        }
+                    ]
+                },
+                "message" : "##Endoded Object JSON // TODO: Define"
+            }
+        },
+        "flowPayload" : {
+            "messageHeader" : {
+                    "params" : [
+                        {
+                            "paramKey" : "Encrypted",
+                            "value" : "True"
+                        },
+                        {
+                            "paramKey" : "PublicKey",
+                            "value" : "SOMEKEY"
+                        }
+                    ]
+                },
+                "message" : "##Endoded Object JSON // TODO: Define"
+        }
+
+    }
+}

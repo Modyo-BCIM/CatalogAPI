@@ -1,0 +1,43 @@
+{
+	"dataFlowSearchResult" : {
+		"flowData" : [
+			{
+				"flowDataID" : "1033002",
+				"domainInfo" : {
+					"id" : "BD-001",
+					"name" : "Accounts"
+				},
+				"flowInfo" : {
+					"id" : "BF-001",
+					"name" : "OnBoarding",
+					"creationDate" : "$Timestamp",
+					"lastModificationDate" : "$Timestamp"
+				},
+				"flowStatusInfo" : {
+					"id" : "12934892",
+					"statusID" : "ST-00",
+					"statusName" : "Stage 0"
+				}
+			},
+			{
+				"flowDataID" : "10333244",
+				"domainInfo" : {
+					"id" : "BD-001",
+					"name" : "Accounts"
+				},
+				"flowInfo" : {
+					"id" : "BF-001",
+					"name" : "OnBoarding Joining",
+					"creationDate" : "$Timestamp",
+					"lastModificationDate" : "$Timestamp"
+				},
+				"flowStatusInfo" : {
+					"id" : "12934892",
+					"statusID" : "ST-01",
+					"statusName" : "Stage 1"
+				}
+			}
+
+		]
+	}
+}
