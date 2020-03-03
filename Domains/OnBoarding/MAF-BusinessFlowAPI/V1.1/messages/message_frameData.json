@@ -1,0 +1,25 @@
+{
+    "frameData": {
+        "id": "100234",
+        "domainID": "BD-01",
+        "flowID": "BF-001",
+        "frameID": "BF-001",
+        "layoutID": "BL-001",
+        "userID": "john@mail.com",
+        "payload": {
+            "messageHeader": {
+                "params": [
+                    {
+                        "paramKey": "Encrypted",
+                        "value": "True"
+                    },
+                    {
+                        "paramKey": "PublicKey",
+                        "value": "SOMEKEY"
+                    }
+                ]
+            },
+            "message": "##Encoded Object JSON // TODO: Define"
+        }
+    }
+}

@@ -1,0 +1,242 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "MAF-FlowDataAPI",
+        "version": "1.0.0",
+        "description": "This API contains the data manipulation operations to get read and write transactions with the frame data.",
+        "contact": {
+            "name": "Ricardo Paredes",
+            "url": "https://developer.modyo.com",
+            "email": "rparedes@modyo.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://{hostName}:{port}/maf/bci-m/services",
+            "description": "Apigateway Endpoint Service",
+            "variables": {
+                "hostName": {
+                    "default": "localhost",
+                    "description": "Hostname"
+                },
+                "port": {
+                    "default": "443",
+                    "description": "Server Port"
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/framedata": {
+            "summary": "Path used to manage the list of framedata.",
+            "description": "The REST endpoint/path used to list and create zero or more `frameData` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/frameData"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful response - returns an array of `frameData` entities."
+                    }
+                },
+                "operationId": "getframedata",
+                "summary": "List All framedata",
+                "description": "Gets a list of all `frameData` entities."
+            },
+            "post": {
+                "requestBody": {
+                    "description": "A new `frameData` to be created.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/frameData"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "createframeData",
+                "summary": "Create a frameData",
+                "description": "Creates a new instance of a `frameData`."
+            }
+        },
+        "/framedata/{framedataId}": {
+            "summary": "Path used to manage a single frameData.",
+            "description": "The REST endpoint/path used to get, update, and delete single instances of an `frameData`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/frameData"
+                                }
+                            }
+                        },
+                        "description": "Successful response - returns a single `frameData`."
+                    }
+                },
+                "operationId": "getframeData",
+                "summary": "Get a frameData",
+                "description": "Gets the details of a single instance of a `frameData`."
+            },
+            "put": {
+                "requestBody": {
+                    "description": "Updated `frameData` information.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/frameData"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "updateframeData",
+                "summary": "Update a frameData",
+                "description": "Updates an existing `frameData`."
+            },
+            "delete": {
+                "responses": {
+                    "204": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "deleteframeData",
+                "summary": "Delete a frameData",
+                "description": "Deletes an existing `frameData`."
+            },
+            "parameters": [
+                {
+                    "name": "framedataId",
+                    "description": "A unique identifier for a `frameData`.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "frameData": {
+                "title": "Root Type for frameData",
+                "description": "FRamData Object to collect FRame Forms user input data.",
+                "type": "object",
+                "properties": {
+                    "frameData": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "domainID": {
+                                "type": "string"
+                            },
+                            "flowID": {
+                                "type": "string"
+                            },
+                            "frameID": {
+                                "type": "string"
+                            },
+                            "layoutID": {
+                                "type": "string"
+                            },
+                            "userID": {
+                                "type": "string"
+                            },
+                            "payload": {
+                                "type": "object",
+                                "properties": {
+                                    "messageHeader": {
+                                        "type": "object",
+                                        "properties": {
+                                            "params": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "paramKey": {
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "frameData": {
+                        "id": "100234",
+                        "domainID": "BD-01",
+                        "flowID": "BF-001",
+                        "frameID": "BF-001",
+                        "layoutID": "BL-001",
+                        "userID": "john@mail.com",
+                        "payload": {
+                            "messageHeader": {
+                                "params": [
+                                    {
+                                        "paramKey": "Encrypted",
+                                        "value": "True"
+                                    },
+                                    {
+                                        "paramKey": "PublicKey",
+                                        "value": "SOMEKEY"
+                                    }
+                                ]
+                            },
+                            "message": "##Encoded Object JSON // TODO: Define"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "MAF-SecuritySchema-01": {
+                "openIdConnectUrl": "https://openid.c2id.com/login?",
+                "type": "openIdConnect",
+                "description": "Security Schema OpenIDConnect (Keycloack)"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "BCI-M",
+            "description": "Client Identifier"
+        }
+    ]
+}

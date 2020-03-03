@@ -1,7 +1,5 @@
 {
-	"flowDataResponse" : {
-		"flowDataID" : "01477",
-		"userID" : "john@mail.com",
-		"flowStatusID" : "31242"
-	}
+    "flowDataID": "01477",
+    "flowStatusID": "31242",
+    "userID": "john@mail.com"
 }
